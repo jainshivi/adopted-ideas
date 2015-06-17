@@ -49,6 +49,10 @@ a#submitIdea {
 
 }
 
+.ideaContent span {
+	cursor:pointer;
+}
+
 #adoptedIdeasWidget {
 	background-image: url('images/Adopted Sign.png');
 	background-repeat: no-repeat;

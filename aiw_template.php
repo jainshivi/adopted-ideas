@@ -15,21 +15,44 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 		<h4 class='widget-title'>Adopted Ideas</h4>
 	</div>
 
+
+
 	<?php if($idea_count){ ?>
+	<script>
+		var ideas = {};
+
+		function collapse()
+		{
+			console.log("hi world");
+		}
+	</script>
 	<div class='adopted-ideas'>
 		<?php $ideas = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."adoptedideaswidget WHERE campaignid='$postid' ORDER BY time DESC");
 		foreach ($ideas as $idea) {
 			$userinfo = get_userdata($idea->userid);
 			$userinfo = $userinfo->data;
+
+			$MAX_CHARACTERS = 75;							//the maxiumum number of characters to be displayed in the shortened content
+			$content = stripslashes($idea->content);
+			$subcontent = substr($content, 0, $MAX_CHARACTERS);
+			$id = $idea->id;
 			echo "<div class='idea'>
 					<div class='avatar'>".get_avatar($idea->userid,'25')."</div>
 					<div class='ideaContent'><strong>".$userinfo->user_nicename."</strong> 
-					".stripslashes($idea->content)."</div>
+					<span onclick='collapse(".$id.")' idea-id='".$id."'>".$subcontent."...</span></div>
 					
-				</div>";
+				</div>
+				<script>
+					ideas['".$id."']= {content: '".$content."', maxCharacters:".$MAX_CHARACTERS.", display: 0};
+				</script>
+				";
+
 		}?>
 	</div>
+	
 	<?php } ?>
+
+
 
 	<?php if(get_current_user_id()){ ?>	
 	<div class='suggest-idea'>
