@@ -4,7 +4,7 @@ require_once('../../../wp-load.php');
 
 $data = array(
 	'recipients'=>$_POST['author'],
-	'subject'=>'New Contributed Idea',
+	'subject'=>'Ideas',
 	'content'=>$_POST['text']
 );
 

@@ -36,8 +36,11 @@ a#submitIdea {
 }
 
 .adopted-ideas .idea {
-	height: 50px;
+	min-height: 50px;
 	margin: 10px 0px;
+	padding: 5px;
+	border-radius:3px;
+	background: white;
 }
 .adopted-ideas .idea .avatar {
 	margin: 0px 5px;
