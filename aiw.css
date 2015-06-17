@@ -1,0 +1,47 @@
+
+.suggest-idea {
+    text-align: center;
+}
+.suggest-idea .button-small {
+    color: #000;
+    background-color: yellow;
+    box-shadow: none;
+    border: 1px solid #444;
+    max-width: 15rem;
+}
+
+#contributeAnIdeaModal a {
+	text-decoration: none;
+}
+
+textarea#ideaText {
+	margin: 0 auto;
+	width: 75%;
+	display: block;
+	max-width: 100%;
+	font-size: 1.25em;
+	padding: 20px;
+}
+
+a#submitIdea {
+	margin-left: 37.8%;
+	margin-top: 20px;
+	margin-right: 10px;
+}
+
+.adopted-ideas {
+	max-height: 110px;
+	overflow-y: scroll;
+	margin-bottom: 10px;
+}
+
+.adopted-ideas .idea {
+	height: 50px;
+	margin: 10px 0px;
+}
+.adopted-ideas .idea .avatar {
+	margin: 0px 5px;
+}
+.adopted-ideas .idea .ideaContent {
+
+}
