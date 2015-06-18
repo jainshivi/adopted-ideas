@@ -89,6 +89,12 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 	<div class="title-wrapper"><h2 class="block-title">Contribute An Idea</h2></div>
 
 	<div class="row">
+	  <div class="large-3 columns">
+	    <textarea placeholder="Ideas" id="ideaSubject"></textarea>
+	  </div>
+	</div>
+
+	<div class="row">
 	  <div class="large-12 columns">
 	    <textarea placeholder="Your Idea" id="ideaText"></textarea>
 	  </div>

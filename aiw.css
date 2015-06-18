@@ -1,4 +1,3 @@
-
 .suggest-idea {
     text-align: center;
 }
@@ -12,6 +11,15 @@
 
 #contributeAnIdeaModal a {
 	text-decoration: none;
+}
+
+textarea#ideaSubject {
+	margin: 0 auto;
+	width: 75%;
+	display: block;
+	max-width: 100%;
+	font-size: 1.25em;
+	padding: 20px;
 }
 
 textarea#ideaText {
