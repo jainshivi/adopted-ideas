@@ -19,11 +19,30 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 
 	<?php if($idea_count){ ?>
 	<script>
-		var ideas = {};
 
-		function collapse()
+
+		var ideas = {};			// information from ideas to be stored here for collapsable reuse
+
+		/**
+		 * method: collapse
+		 * implements collapsable contents. executed on click
+		 * from element. Uses element idea id information
+		 * to determine whether it is collapsed or open
+		 * and then acts on that.
+		 * @param  element
+		 */
+		function collapse(element)
 		{
-			console.log("hi world");
+			ideaId = element.getAttribute("idea-id");
+			idea = ideas[ideaId];
+			if(idea.display == 1) {
+				element.innerHTML = idea.content.substring(0, idea.maxCharacters) + "...";
+				idea.display = 0;
+			}
+			else {
+				element.innerHTML = idea.content;
+				idea.display = 1;
+			}
 		}
 	</script>
 	<div class='adopted-ideas'>
@@ -39,7 +58,7 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 			echo "<div class='idea'>
 					<div class='avatar'>".get_avatar($idea->userid,'25')."</div>
 					<div class='ideaContent'><strong>".$userinfo->user_nicename."</strong> 
-					<span onclick='collapse(".$id.")' idea-id='".$id."'>".$subcontent."...</span></div>
+					<span onclick='collapse(this)' idea-id='".$id."'>".$subcontent."...</span></div>
 					
 				</div>
 				<script>
