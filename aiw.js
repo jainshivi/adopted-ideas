@@ -4,9 +4,10 @@ jQuery(document).ready(function(){
 		var user = jQuery('#userid').val();
 		var post = jQuery('#campaignid').val();
 		var author = jQuery('#author').val();
+		var subject = jQuery('#ideaSubject').val();
 		var plugindir = jQuery('#plugindir').val();
 		jQuery('#ideaText').val('');
-		jQuery.post(plugindir+'/adopted-ideas/send_message.php',{text:text,user:user,post:post,author:author},function(data){
+		jQuery.post(plugindir+'/adopted-ideas/send_message.php',{text:text,user:user,post:post,author:author,subject:subject},function(data){
 			console.log(data);
 		});
 	});

@@ -46,7 +46,7 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 		}
 	</script>
 	<div class='adopted-ideas'>
-		<?php $ideas = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."adoptedideaswidget WHERE campaignid='$postid' ORDER BY time DESC");
+		<?php $ideas = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."adoptedideaswidget WHERE campaignid='$postid' AND approved='1' ORDER BY time DESC");
 		foreach ($ideas as $idea) {
 			$userinfo = get_userdata($idea->userid);
 			$userinfo = $userinfo->data;
