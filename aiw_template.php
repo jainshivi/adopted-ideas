@@ -75,7 +75,11 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 
 	<?php if(get_current_user_id()){ ?>	
 	<div class='suggest-idea'>
-		<a class="button button-small" href="#" data-reveal-id="contributeAnIdeaModal">CONTRIBUTE AN IDEA</a>
+		<a class="imagebutton" href="#" data-reveal-id="contributeAnIdeaModal">
+			<img src='../../wp-content/plugins/adopted-ideas/images/ContributeIdea_n.png' 
+			onmousedown="this.src='../../wp-content/plugins/adopted-ideas/images/ContributeIdea_s.png'" 
+			onmouseout="this.src='../../wp-content/plugins/adopted-ideas/images/ContributeIdea_n.png'" />
+		</a>
 	</div>
 	<?php } ?>
 </aside>

@@ -6,6 +6,12 @@ $bp_id = str_replace("m-", "", $_GET['message']);
 
 global $wpdb;
 
+/**
+ * solution is to update the sql query so that it only
+ * queries ONE record, the most recent one.
+ * 
+ */
+
 $wpdb->update($wpdb->prefix . 'adoptedideaswidget',
 	array(
 		'approved'=>'1',
