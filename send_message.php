@@ -11,6 +11,8 @@ $data = array(
 $bp_id = messages_new_message($data);
 
 global $wpdb;
+$id = $wpdb->get_var( "SELECT id FROM wp_20hgjnxdv0_bp_messages_messages WHERE thread_id='$bp_id'");
+
 
 $wpdb->insert($wpdb->prefix . 'adoptedideaswidget',
 	array(
@@ -19,6 +21,6 @@ $wpdb->insert($wpdb->prefix . 'adoptedideaswidget',
 		'campaignid' => $_POST['post'],
 		'content' => $_POST['text'],
 		'approved' => '0',
-		'bp_id' => $bp_id
+		'bp_id' => $id
 	)
 );
