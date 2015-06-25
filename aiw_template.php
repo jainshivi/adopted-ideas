@@ -36,7 +36,6 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 					<div class='avatar'>".get_avatar($idea->userid,'25')."</div>
 					<div class='ideaContent'><strong>".$userinfo->user_nicename."</strong> 
 					<span class='idea-text' idea-id='$id' collapsed='0'>$content</span></div>
-					
 				</div>
 				";
 
@@ -57,51 +56,47 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 			
 		});
 		jQuery(window).ready(function(){
-			collapse(jQuery('.idea-text'));
+			jQuery('.idea-text').each(function(index){
+				var element = jQuery(this)
+				var ideaId = element.attr('idea-id');
+				
+				var content = element.html().toString();
+				var subcontent = content.substring(0, MAX_CHARACTERS) + "...";
+				var firstOccurence = subcontent.indexOf("<br");
+				var secondOccurence = subcontent.indexOf("<br", firstOccurence + 3);
+				alert(content);
+				if(secondOccurence >= 0) {
+					subcontent = subcontent.substring(0, secondOccurence) + "...";
+					alert("converted to " + subcontent);
+				}
+
+				console.log("content: " + content + "\n subcontent: " + subcontent)
+				ideas[ideaId.toString()] = { content: content, subcontent: subcontent }
+
+				collapse(element);
+			});
 		});
 
-		function collapse(element)
-		{
+		function collapse(element) {
 			var isCollapsed = element.attr('collapsed');
-			var ideaId = element.attr('idea-id');
+			var ideaId = element.attr('idea-id').toString();
 			if(isCollapsed == '0')
 			{
-				var content = element.html().toString()
-				ideas[ideaId.toString()] = content;
-				element.html(content.substring(0, MAX_CHARACTERS) + "...");
-				element.attr('collapsed', '1')
+				console.log("converting to subcontent");
+				var subcontent = ideas[ideaId].subcontent
+				element.html(subcontent)
+				element.attr("collapsed", '1');
 			}
 			else
 			{
-				var content = ideas[ideaId.toString()]
+				console.log("converting to content");
+				var content = ideas[ideaId].content
 				element.html(content);
 				element.attr('collapsed', '0')
 			}
 		}
 
-		/**
-		 * method: collapse
-		 * implements collapsable contents. executed on click
-		 * from element. Uses element idea id information
-		 * to determine whether it is collapsed or open
-		 * and then acts on that.
-		 * @param  element
-		 */
-		/*function collapse(element)
-		{
-			ideaId = element.attr("idea-id");
-			idea = ideas[ideaId];
-			if(idea.display == 1) {
-				alert("already open, so closing");
-				element.innerHTML = idea.content.substring(0, idea.maxCharacters) + "...";
-				idea.display = 0;
-			}
-			else {
-				alert("already closed so opening");
-				element.innerHTML = idea.content;
-				idea.display = 1;
-			}
-		}*/
+		
 	</script>
 	<?php } ?>
 
