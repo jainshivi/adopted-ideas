@@ -13,13 +13,13 @@
 	text-decoration: none;
 }
 
-textarea#ideaSubject {
+input#ideaSubject {
 	margin: 0 auto;
 	width: 75%;
 	display: block;
 	max-width: 100%;
 	font-size: 1.25em;
-	padding: 20px;
+	padding: 10px 20px;
 }
 
 textarea#ideaText {
@@ -29,6 +29,11 @@ textarea#ideaText {
 	max-width: 100%;
 	font-size: 1.25em;
 	padding: 20px;
+	resize:vertical;
+}
+
+.ideainput {
+	padding-bottom:10px;
 }
 
 a#submitIdea {

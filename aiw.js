@@ -1,6 +1,7 @@
 jQuery(document).ready(function(){
 	jQuery('#submitIdea').click(function(e){
 		var text = jQuery("#ideaText").val();
+		console.log("text");
 		var user = jQuery('#userid').val();
 		var post = jQuery('#campaignid').val();
 		var author = jQuery('#author').val();
