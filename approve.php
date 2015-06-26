@@ -39,7 +39,7 @@ $wpdb->update($wpdb->prefix . 'adoptedideaswidget',
 	array('bp_id'=>$id)
 );
 
-messages_delete_thread($bp_id);
+//messages_delete_thread($bp_id);
 
 
 header("Location: ".$_SERVER['HTTP_REFERER']);
