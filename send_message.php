@@ -2,11 +2,20 @@
 
 require_once('../../../wp-load.php');
 
+$content = $_POST['text'];
+
+$data = array(
+	'recipients'=>$_POST['author'],
+	'subject'=>$_POST['subject'],
+	'content'=>$content
+);
+
+/*
 $data = array(
 	'recipients'=>$_POST['author'],
 	'subject'=>$_POST['subject'],
 	'content'=>$_POST['text']
-);
+);*/
 
 /*$data_confirmation = array (
 	'recipients'=>$_POST['user'],
@@ -31,7 +40,17 @@ global $wpdb;
  * the scope of this plugin, we must settle for an extraneous sql query.
  * @var [type]
  */
-$id = $wpdb->get_var( "SELECT id FROM wp_20hgjnxdv0_bp_messages_messages WHERE thread_id='$bp_id' ORDER BY id ASC LIMIT 1");
+$id = $wpdb->get_var( "SELECT id FROM ".$wpdb->prefix."bp_messages_messages WHERE thread_id='$bp_id' ORDER BY id ASC LIMIT 1");
+
+//update message with $bp_id
+$content_with_link = $content."\n\n<a style='color:blue' href='".plugins_url()."/adopted-ideas/approve.php?message=$bp_id'>Adopt The Idea</a>";
+
+$wpdb->update($wpdb->prefix . 'bp_messages_messages',
+	array(
+		'message'=>$content_with_link
+	),
+	array('id'=>$id)
+);
 
 
 $wpdb->insert($wpdb->prefix . 'adoptedideaswidget',

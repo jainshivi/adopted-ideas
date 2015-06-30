@@ -61,12 +61,12 @@ require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 dbDelta($sql);
 
 function add_bp_action(){
-	echo '<script>
+	/*echo '<script>
 		jQuery("td.thread-options").each(function(){
 			var message = jQuery(this).parent().attr("id");
 			jQuery(this).append(" | <a class=\"adopt_the_idea\" href=\"'. plugins_url() . '/adopted-ideas/approve.php?message="+message+"\">Adopt The Idea</a>");
 		});
-	</script>';
+	</script>';*/
 }
 
 add_action('bp_after_member_messages_loop', 'add_bp_action');

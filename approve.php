@@ -13,7 +13,7 @@ global $wpdb;
  * the scope of this plugin, we must settle for an extraneous sql query.
  * @var [type]
  */
-$message_info = $wpdb->get_row( "SELECT id, sender_id, subject FROM wp_20hgjnxdv0_bp_messages_messages WHERE thread_id='$bp_id'", ARRAY_A);
+$message_info = $wpdb->get_row( "SELECT id, sender_id, subject FROM ".$wpdb->prefix."bp_messages_messages WHERE thread_id='$bp_id'", ARRAY_A);
 
 $id = $message_info['id'];
 $senderId = $message_info['sender_id'];
@@ -30,6 +30,7 @@ $data = array(
 
 messages_new_message($data);
 
+
 $wpdb->update($wpdb->prefix . 'adoptedideaswidget',
 	array(
 		'approved'=>'1',
@@ -42,6 +43,6 @@ $wpdb->update($wpdb->prefix . 'adoptedideaswidget',
 //messages_delete_thread($bp_id);
 
 
-header("Location: ".$_SERVER['HTTP_REFERER']);
+header("Location: ".$_SERVER['HTTP_REFERER']."../..");
 
 

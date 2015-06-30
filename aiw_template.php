@@ -64,10 +64,8 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 				var subcontent = content.substring(0, MAX_CHARACTERS) + "...";
 				var firstOccurence = subcontent.indexOf("<br");
 				var secondOccurence = subcontent.indexOf("<br", firstOccurence + 3);
-				alert(content);
 				if(secondOccurence >= 0) {
 					subcontent = subcontent.substring(0, secondOccurence) + "...";
-					alert("converted to " + subcontent);
 				}
 
 				console.log("content: " + content + "\n subcontent: " + subcontent)
