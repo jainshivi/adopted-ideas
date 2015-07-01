@@ -27,14 +27,16 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 			$userinfo = get_userdata($idea->userid);
 			$userinfo = $userinfo->data;
 
+			$userlink = "../../members/$userinfo->user_nicename";			# is this link guaranteed to work all the time?
+
 			$MAX_CHARACTERS = 75;							//the maxiumum number of characters to be displayed in the shortened content
 			$content = nl2br(stripslashes($idea->content));
 			$subcontent = substr($content, 0, $MAX_CHARACTERS);
 			$id = $idea->id;
 			echo "
 				<div class='idea'>
-					<div class='avatar'>".get_avatar($idea->userid,'25')."</div>
-					<div class='ideaContent'><strong>".$userinfo->user_nicename."</strong> 
+					<a href='$userlink'><div class='avatar'>".get_avatar($idea->userid,'25')."</div></a>
+					<div class='ideaContent'><a href='$userlink'><strong>".$userinfo->user_nicename."</strong></a> 
 					<span class='idea-text' idea-id='$id' collapsed='0'>$content</span></div>
 				</div>
 				";
