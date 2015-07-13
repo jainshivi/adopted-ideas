@@ -117,23 +117,25 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 
 <div id="contributeAnIdeaModal" class="reveal-modal campaign-form content-block" data-reveal aria-labelledby="contributeAnIdeaModal" aria-hidden="true" role="dialog">
 	<div class="title-wrapper"><h2 class="block-title">Contribute An Idea</h2></div>
+	<div id='contributeAnIdeaModalContent'>
+		<div class="row ideainput">
+		  <div class="large-3 columns">
+		    <!--<textarea placeholder="Ideas" id="ideaSubject"></textarea>-->
+		    <input type='text' placeholder='Subject...' id='ideaSubject' />
+		  </div>
+		</div>
+		<div class="row ideainput">
+		  <div class="large-12 columns">
+		    <textarea placeholder="Your Idea..." id="ideaText"></textarea>
+		  </div>
+		</div>
 
-	<div class="row ideainput">
-	  <div class="large-3 columns">
-	    <!--<textarea placeholder="Ideas" id="ideaSubject"></textarea>-->
-	    <input type='text' placeholder='Subject...' id='ideaSubject' />
-	  </div>
-	</div>
-	<div class="row ideainput">
-	  <div class="large-12 columns">
-	    <textarea placeholder="Your Idea..." id="ideaText"></textarea>
-	  </div>
-	</div>
+		<a class="close-reveal-modal" aria-label="Close"><i class="icon-remove-sign"></i></a>
 
+		<p>
+			<a id="submitIdea" class="button button-small" href="javascript:;">Send</a>
+			<a class="button button-small" href="#" data-reveal-id="contributeAnIdeaModal">Cancel</a>
+		</p>
+	</div>
 	<a class="close-reveal-modal" aria-label="Close"><i class="icon-remove-sign"></i></a>
-
-	<p>
-		<a id="submitIdea" class="button button-small" href="#" data-reveal-id="contributeAnIdeaModal">Send</a>
-		<a class="button button-small" href="#" data-reveal-id="contributeAnIdeaModal">Cancel</a>
-	</p>
 </div>

@@ -10,18 +10,6 @@ $data = array(
 	'content'=>$content
 );
 
-/*
-$data = array(
-	'recipients'=>$_POST['author'],
-	'subject'=>$_POST['subject'],
-	'content'=>$_POST['text']
-);*/
-
-/*$data_confirmation = array (
-	'recipients'=>$_POST['user'],
-	'subject'=>$_POST['subject'],
-	'content'=>$_POST['text']);
-*/
 
 $data_confirmation = array (
 	'recipients'=>$_POST['user'],
@@ -66,5 +54,14 @@ $wpdb->insert($wpdb->prefix . 'adoptedideaswidget',
 		'bp_id' => $id
 	)
 );
+
+
+// returning the result to the caller
+if ($bp_id) {
+	echo 1;
+} else {
+	echo 0;
+}
+
 
 ?>
