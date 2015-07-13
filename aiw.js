@@ -12,12 +12,10 @@ jQuery(document).ready(function(){
 			jQuery('#ideaSubject').val('');
 			jQuery.post(plugindir+'/adopted-ideas/send_message.php',{text:text,user:user,post:post,author:author,subject:subject},function(data){
 				if(data == 1) {
-					console.log("registered data");
 					jQuery('#contributeAnIdeaModalContent').html('<div style="text-align: center;font-weight:bold;font-size:16px;">Your idea has been sent to the campaign author!</div>');
 					
 				} else {
-					console.log("did not register data");
-					jQuery('#contributeAnIdeaModalContent').html('<div style="text-align: center;font-weight:bold;color:#900;font-size:16px;">Sorry! Your idea can not be sent at this time. Please try again later!</div>');
+					jQuery('#contributeAnIdeaModalContent').html('<div style="text-align: center;font-weight:bold;color:#900;font-size:16px;">Sorry! Your idea cannot be sent at this time. Please try again later!</div>');
 				}
 			});
 		}
