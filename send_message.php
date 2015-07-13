@@ -29,6 +29,9 @@ $data_confirmation = array (
 	'content'=>$_POST['text']);
 
 $bp_id = messages_new_message($data);
+
+// When a message is sent to the user who is sending the message,
+// there may be no email that is sent.
 messages_new_message($data_confirmation);
 
 global $wpdb;
@@ -63,3 +66,5 @@ $wpdb->insert($wpdb->prefix . 'adoptedideaswidget',
 		'bp_id' => $id
 	)
 );
+
+?>

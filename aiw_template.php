@@ -70,7 +70,6 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 					subcontent = subcontent.substring(0, secondOccurence) + "...";
 				}
 
-				console.log("content: " + content + "\n subcontent: " + subcontent)
 				ideas[ideaId.toString()] = { content: content, subcontent: subcontent }
 
 				collapse(element);
@@ -82,14 +81,12 @@ $idea_count = $wpdb->get_var( "SELECT COUNT(*) FROM ".$wpdb->prefix."adoptedidea
 			var ideaId = element.attr('idea-id').toString();
 			if(isCollapsed == '0')
 			{
-				console.log("converting to subcontent");
 				var subcontent = ideas[ideaId].subcontent
 				element.html(subcontent)
 				element.attr("collapsed", '1');
 			}
 			else
 			{
-				console.log("converting to content");
 				var content = ideas[ideaId].content
 				element.html(content);
 				element.attr('collapsed', '0')
